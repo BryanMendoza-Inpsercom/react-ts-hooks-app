@@ -19,9 +19,9 @@ export type TaskAction =
   | { type: "DELETE_TODO"; payload: number };
 
 const TodoSchema = z.object({
-  id: z.number,
+  id: z.number(),
   text: z.string(),
-  completed: z.boolean,
+  completed: z.boolean(),
 });
 
 const TaskStateSchema = z.object({
@@ -63,6 +63,7 @@ export const taskReducer = (
   state: TaskState,
   action: TaskAction
 ): TaskState => {
+
   switch (action.type) {
     case "ADD_TODO": {
       const newTodo: Todo = {
